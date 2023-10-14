@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="static\js\script.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="static\css\style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <a href="http://127.0.0.1:5000/">Go back to input form</a>
+        </div>
+
+        <div class="row">
+            <div id="centered">
+                <h1>Charged Off Loans Trend</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="centered">
+                <a
+                    href=https://public.tableau.com/views/FinalProjectDashboard_16971555737870/Dashboard2?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link>Go
+                    to Tableau Dashboard for more details</a>
+            </div>
+        </div>
+        
+        <hr>
+
+        <div class=" row">
+            <div id="centered">
+                <h4>Select State:</h4>
+                <select id="locationDropdown" name="states_unique" action="/graphs" method="GET">
+                    {% for state in states_unique %}
+                    <option value="{{ state }}">{{ state }} </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class=" row">
+            <div id="applicationsTrend"> </div>
+        </div>
+
+        <div class=" row">
+            <div id="amountTrend"> </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
