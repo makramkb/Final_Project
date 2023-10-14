@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Loan Approval Class Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <select name="State" id="State">
+            <option value="5">California</option>
+
+          </select>
+    	<!-- <input type="text" name="State" placeholder="State" required="required" /> -->
+        <input type="text" name="Term" placeholder="Term" required="required" />
+		<input type="text" name="NoEmp" placeholder="NoEmp" required="required" />
+		<input type="text" name="NewExist" placeholder="NewExist" required="required" />
+        <input type="text" name="CreateJob" placeholder="CreateJob" required="required" />
+        <input type="text" name="RetainedJob" placeholder="RetainedJob" required="required" />
+		<input type="text" name="FranchiseCode" placeholder="FranchiseCode" required="required" />
+		<input type="text" name="UrbanRural" placeholder="UrbanRural" required="required" />
+        <input type="text" name="RevLineCr" placeholder="RevLineCr" required="required" />
+        <input type="text" name="LowDoc" placeholder="LowDoc" required="required" />
+		<input type="text" name="GrAppv" placeholder="GrAppv" required="required" />
+		<input type="text" name="Industry" placeholder="Industry" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+ <div class="dashboard">
+    <a href="http://127.0.0.1:5000/graphs">Go to Dashboard</a>
+
+ </div>
+
+</body>
+</html>
