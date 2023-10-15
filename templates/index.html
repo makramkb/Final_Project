@@ -1,51 +1,113 @@
 <!DOCTYPE html>
-<html >
+<html>
 <!--From https://codepen.io/frytyler/pen/EGdtg-->
+
 <head>
-  <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-  
+    <meta charset="UTF-8">
+    <title>ML API</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+    <!-- Our CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="style.css"> -->
 </head>
 
 <body>
- <div class="login">
-	<h1>Loan Approval Class Prediction</h1>
 
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-        <select name="State" id="State">
-            <option value="5">California</option>
+    <div class="login">
+        <h1>Loan Approval Class Prediction</h1>
 
-          </select>
-    	<!-- <input type="text" name="State" placeholder="State" required="required" /> -->
-        <input type="text" name="Term" placeholder="Term" required="required" />
-		<input type="text" name="NoEmp" placeholder="NoEmp" required="required" />
-		<input type="text" name="NewExist" placeholder="NewExist" required="required" />
-        <input type="text" name="CreateJob" placeholder="CreateJob" required="required" />
-        <input type="text" name="RetainedJob" placeholder="RetainedJob" required="required" />
-		<input type="text" name="FranchiseCode" placeholder="FranchiseCode" required="required" />
-		<input type="text" name="UrbanRural" placeholder="UrbanRural" required="required" />
-        <input type="text" name="RevLineCr" placeholder="RevLineCr" required="required" />
-        <input type="text" name="LowDoc" placeholder="LowDoc" required="required" />
-		<input type="text" name="GrAppv" placeholder="GrAppv" required="required" />
-		<input type="text" name="Industry" placeholder="Industry" required="required" />
+        <div><img src="../static/images/ML_variables.PNG" alt="list" width="500" height="500" /></div><br><br>
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}" method="post">
+            <select name="State" id="State">
+                <option value="4">CA</option>
+                <option value="34">NY</option>
+                <option value="43">TX</option>
+                <option value="9">FL</option>
+                <option value="38">PA</option>
+                <option value="35">OH</option>
+                <option value="14">IL</option>
+                <option value="19">MA</option>
+                <option value="22">MI</option>
+                <option value="31">NJ</option>
+                <option value="44">UT</option>
+                <option value="47">WA</option>
+                <option value="23">MN</option>
+                <option value="10">GA</option>
+                <option value="5">CO</option>
+            </select></br></br>
+            <!-- <input type="text" name="State" placeholder="State" required="required" /> -->
+            <input type="text" name="Term" placeholder="Term" required="required" /></br></br>
+            <input type="text" name="NoEmp" placeholder="NoEmp" required="required" /></br></br>
+            <!-- <input type="text" name="NewExist" placeholder="NewExist" required="required" /> -->
+            <select name="NewExist" id="NewExist">
+                <option value="1">Existing Business</option>
+                <option value="2">New Business</option>
+            </select></br></br>
+            <input type="text" name="CreateJob" placeholder="CreateJob" required="required" /></br></br>
+            <input type="text" name="RetainedJob" placeholder="RetainedJob" required="required" /></br></br>
+            <!-- <input type="text" name="FranchiseCode" placeholder="FranchiseCode" required="required" /> -->
+            <label for="FranchiseCode">Is it a Franchise:</label>
+            <select name="FranchiseCode" id="FranchiseCode">
+                <option value="0">NO</option>
+                <option value="1">YES</option>
+            </select></br></br>
+            <!-- <input type="text" name="UrbanRural" placeholder="UrbanRural" required="required" /> -->
+            <label for="UrbanRural">Is it a Urban or Rural :</label>
+            <select name="UrbanRural" id="UrbanRural">
+                <option value="1">Urban</option>
+                <option value="2">Rural</option>
+            </select></br></br>
+            <!-- <input type="text" name="RevLineCr" placeholder="RevLineCr" required="required" /> -->
+            <label for="RevLineCr">Is it a Revolvinsg Credit :</label>
+            <select name="RevLineCr" id="RevLineCr">
+                <option value="0">NO</option>
+                <option value="1">YES</option>
+            </select></br></br>
+            <!-- <input type="text" name="LowDoc" placeholder="LowDoc" required="required" /> -->
+            <label for="LowDoc">Is it having Low Documentation :</label>
+            <select name="LowDoc" id="LowDoc">
+                <option value="0">NO</option>
+                <option value="1">YES</option>
+            </select></br></br>
 
-   <br>
-   <br>
-   {{ prediction_text }}
+            <input type="text" name="GrAppv" placeholder="GrAppv" required="required" /></br></br>
+            <!-- <input type="text" name="Industry" placeholder="Industry" required="required" /> -->
+            <select name="Industry" id="Industry">
+                <option value="16">Retail_trade</option>
+                <option value="13">Prof/Science/Tech</option>
+                <option value="4">Construction</option>
+                <option value="12">Other_no_pub</option>
+                <option value="9">Manufacturing</option>
+                <option value="0">Accom/Food_serv</option>
+                <option value="7">Healthcare/Social_assist</option>
+                <option value="19">Wholesale_trade</option>
+                <option value="1">Admin_sup/Waste_Mgmt_Rem</option>
+                <option value="17">Trans/Ware</option>
+                <option value="15">RE/Rental/Lease</option>
+                <option value="3">Arts/Entertain/Rec</option>
+                <option value="6">Finance/Insurance</option>
+                <option value="8">Information</option>
+                <option value="5">Educational</option>
+            </select></br></br></br>
 
- </div>
- <div class="dashboard">
-    <a href="http://127.0.0.1:5000/graphs">Go to Dashboard</a>
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
 
- </div>
+        <br><br>
+        {{ prediction_text }}
+        <br><br>
+
+    </div>
+    <div class="dashboard">
+        <a href="http://127.0.0.1:5000/graphs">Go to Dashboard</a>
+    </div>
 
 </body>
+
 </html>
